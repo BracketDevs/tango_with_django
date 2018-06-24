@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+
+<head>
+    <title>About</title>
+</head>
+
+<body>
+    <h1>About page</h1>
+    <div>
+        <a href="/rango/">Index</a>
+        <br />
+        This tutorial has been put together by {{ my_name }}
+        <br />
+        <br />
+    </div>
+    <div>
+        Media file:
+        <br />
+        <img src="{{ MEDIA_URL }}cat.jpg" width=200 alt="Le Kitten"/>
+    </div>
+</body>
+
+</html>
