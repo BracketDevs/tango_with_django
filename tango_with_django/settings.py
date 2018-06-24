@@ -15,6 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -63,6 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # template context processors causes 'every RequestContext will contain a variable MEDIA_URL'
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -118,4 +122,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATICFILES_DIRS = [STATIC_DIR, ]
+# exposes static files on this endpoint
+# Always include trailing forward slash as per https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-STATIC_URL
 STATIC_URL = '/static/'
+
+
+# Serving Media files
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
